@@ -1,7 +1,7 @@
 // This is v0.1.0
 // simple console log
 
-const DEFAULT_FONT_COLOR = "#0275d8";
+const DEFAULT_FONT_COLOR = "#00000";
 const SUCCESS_FONT_COLOR = "#5cb85c";
 const INFO_FONT_COLOR = "#5bc0de";
 const WARN_FONT_COLOR = "#f0ad4e";
