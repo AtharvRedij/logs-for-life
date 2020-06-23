@@ -1,6 +1,6 @@
 {
   "name": "logs-for-life",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a simple logging library",
   "main": "index.js",
   "scripts": {
