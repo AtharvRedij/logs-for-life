@@ -1,6 +1,3 @@
-// This is v0.1.0
-// simple console log
-
 const DEFAULT_FONT_COLOR = "#00000";
 const SUCCESS_FONT_COLOR = "#5cb85c";
 const INFO_FONT_COLOR = "#5bc0de";
@@ -10,32 +7,48 @@ const ERROR_FONT_COLOR = "#d9534f";
 const DEFAULT_FONT_WEIGHT = "400";
 const DEFAULT_FONT_SIZE = "1.3em";
 
-const log = (
-  message,
-  fontColor = DEFAULT_FONT_COLOR,
-  fontWeight = DEFAULT_FONT_WEIGHT,
-  fontSize = DEFAULT_FONT_SIZE
-) => {
-  console.log(
-    "%c" + message,
-    `color: ${fontColor}; font-weight: ${fontWeight}; font-size: ${fontSize}`
-  );
+// actual function that does the logging
+// can take multiple args
+const print = (fontColor, fontWeight, fontSize, ...args) => {
+  for (i = 0; i < args.length; i++) {
+    const arg = args[i];
+
+    // if arg is not a string then print normally
+    if (typeof arg !== "string") {
+      console.log(arg);
+    } else {
+      console.log(
+        "%c " + arg,
+        `color: ${fontColor}; font-weight: ${fontWeight}; font-size: ${fontSize}`
+      );
+    }
+  }
 };
 
-const success = (message) => {
-  log(message, SUCCESS_FONT_COLOR);
+const log = (...args) => {
+  print(DEFAULT_FONT_COLOR, DEFAULT_FONT_WEIGHT, DEFAULT_FONT_SIZE, ...args);
 };
 
-const info = (message) => {
-  log(message, INFO_FONT_COLOR);
+const success = (...args) => {
+  print(SUCCESS_FONT_COLOR, DEFAULT_FONT_WEIGHT, DEFAULT_FONT_SIZE, ...args);
 };
 
-const warn = (message) => {
-  log(message, WARN_FONT_COLOR);
+const info = (...args) => {
+  print(INFO_FONT_COLOR, DEFAULT_FONT_WEIGHT, DEFAULT_FONT_SIZE, ...args);
 };
 
-const error = (message) => {
-  log(message, ERROR_FONT_COLOR);
+const warn = (...args) => {
+  print(WARN_FONT_COLOR, DEFAULT_FONT_WEIGHT, DEFAULT_FONT_SIZE, ...args);
+};
+
+const error = (...args) => {
+  print(ERROR_FONT_COLOR, DEFAULT_FONT_WEIGHT, DEFAULT_FONT_SIZE, ...args);
+};
+
+const group = (title, ...args) => {
+  console.group(title);
+  log(...args);
+  console.groupEnd();
 };
 
 module.exports = {
@@ -44,4 +57,5 @@ module.exports = {
   info,
   warn,
   error,
+  group,
 };

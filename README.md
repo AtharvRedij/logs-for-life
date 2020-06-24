@@ -16,4 +16,6 @@ lfl.success("Account created successfully");
 lfl.info("Server started");
 lfl.warn("Memory usage is over 90%");
 lfl.error("Network disconnected");
+
+lfl.group("Things to learn", "MongoDB", "Express", "React", "NodeJS");
 ```
